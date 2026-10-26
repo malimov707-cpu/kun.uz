@@ -1,0 +1,33 @@
+
+### 1. Create
+POST http://localhost:8081/api/v1/profiles
+Content-Type: application/json
+
+{
+  "name": "Eshamat",
+  "surname": "Eshamtev",
+  "email": "eshamat@example.com",
+  "phone": "+998943219191",
+  "password": "21212121345"
+}
+
+### 2. Get all
+GET http://localhost:8081/api/v1/profiles
+
+### 3. Get by id
+GET http://localhost:8081/api/v1/profiles/1
+
+### 4. Update
+PUT http://localhost:8081/api/v1/profiles/1
+Content-Type: application/json
+
+{
+  "name": "Tanka",
+  "surname": "Tankayev",
+  "email": "tanka@example.com",
+  "phone": "+998942324567",
+  "password":"145"
+}
+
+### 5. Delete
+DELETE http://localhost:8081/api/v1/profiles/1
