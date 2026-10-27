@@ -3,8 +3,6 @@ package dasturlash.uz.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dasturlash.uz.enums.ProfileRole;
 import dasturlash.uz.enums.ProfileStatus;
-import dasturlash.uz.enums.ProfileRole;
-import dasturlash.uz.enums.ProfileStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -69,6 +67,7 @@ public class Profile {
     public ProfileRole getRole() { return role; }
     public void setRole(ProfileRole role) { this.role = role; }
     public boolean isVisible() { return visible; }
+    public void setVisible(boolean visible) { this.visible = visible; }
     public LocalDateTime getCreatedDate() { return createdDate; }
     public Long getPhotoId() { return photoId; }
     public void setPhotoId(Long photoId) { this.photoId = photoId; }

@@ -1,6 +1,7 @@
 package dasturlash.uz.controller;
 
-import dasturlash.uz.entity.Profile;
+import dasturlash.uz.dto.ProfileDTO;
+import dasturlash.uz.mapper.ProfileMapper;
 import dasturlash.uz.service.ProfileService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -13,30 +14,32 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/profiles")
 public class ProfileController {
     private final ProfileService service;
+    private final ProfileMapper mapper;
 
-    public ProfileController(ProfileService service) {
+    public ProfileController(ProfileService service, ProfileMapper mapper) {
         this.service = service;
+        this.mapper = mapper;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Profile create(@Valid @RequestBody Profile profile) {
-        return service.create(profile);
+    public ProfileDTO create(@Valid @RequestBody ProfileDTO profile) {
+        return mapper.toDto(service.create(mapper.toEntity(profile)));
     }
 
     @GetMapping
-    public Page<Profile> getAll(@PageableDefault(size = 20) Pageable pageable) {
-        return service.getAll(pageable);
+    public Page<ProfileDTO> getAll(@PageableDefault(size = 20) Pageable pageable) {
+        return service.getAll(pageable).map(mapper::toDto);
     }
 
     @GetMapping("/{id}")
-    public Profile getById(@PathVariable Long id) {
-        return service.getById(id);
+    public ProfileDTO getById(@PathVariable Long id) {
+        return mapper.toDto(service.getById(id));
     }
 
     @PutMapping("/{id}")
-    public Profile update(@PathVariable Long id, @Valid @RequestBody Profile profile) {
-        return service.update(id, profile);
+    public ProfileDTO update(@PathVariable Long id, @Valid @RequestBody ProfileDTO profile) {
+        return mapper.toDto(service.update(id, mapper.toEntity(profile)));
     }
 
     @DeleteMapping("/{id}")

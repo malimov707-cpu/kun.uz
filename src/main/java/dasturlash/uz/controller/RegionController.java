@@ -1,6 +1,7 @@
 package dasturlash.uz.controller;
 
-import dasturlash.uz.entity.Region;
+import dasturlash.uz.dto.RegionDTO;
+import dasturlash.uz.mapper.RegionMapper;
 import dasturlash.uz.service.RegionService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -13,25 +14,27 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/regions")
 public class RegionController {
     private final RegionService service;
+    private final RegionMapper mapper;
 
-    public RegionController(RegionService service) {
+    public RegionController(RegionService service, RegionMapper mapper) {
         this.service = service;
+        this.mapper = mapper;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Region create(@Valid @RequestBody Region item) {
-        return service.create(item);
+    public RegionDTO create(@Valid @RequestBody RegionDTO item) {
+        return mapper.toDto(service.create(mapper.toEntity(item)));
     }
 
     @GetMapping
-    public Page<Region> getAll(@PageableDefault(size = 20, sort = "orderNumber") Pageable pageable) {
-        return service.getAll(pageable);
+    public Page<RegionDTO> getAll(@PageableDefault(size = 20, sort = "orderNumber") Pageable pageable) {
+        return service.getAll(pageable).map(mapper::toDto);
     }
 
     @PutMapping("/{id}")
-    public Region update(@PathVariable Long id, @Valid @RequestBody Region item) {
-        return service.update(id, item);
+    public RegionDTO update(@PathVariable Long id, @Valid @RequestBody RegionDTO item) {
+        return mapper.toDto(service.update(id, mapper.toEntity(item)));
     }
 
     @DeleteMapping("/{id}")

@@ -39,5 +39,6 @@ public class ArticleType {
     public String getNameEn() { return nameEn; }
     public void setNameEn(String nameEn) { this.nameEn = nameEn; }
     public boolean isVisible() { return visible; }
+    public void setVisible(boolean visible) { this.visible = visible; }
     public LocalDateTime getCreatedDate() { return createdDate; }
 }
