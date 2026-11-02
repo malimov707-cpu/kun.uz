@@ -1,6 +1,6 @@
 package dasturlash.uz.repository;
 
-import dasturlash.uz.entity.Profile;
+import dasturlash.uz.entity.ProfileEntity;
 import dasturlash.uz.enums.ProfileRole;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,9 +8,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface ProfileRepository extends JpaRepository<Profile, Long> {
+import java.util.Optional;
+
+public interface ProfileRepository extends JpaRepository<ProfileEntity, Long> {
+    Optional<ProfileEntity> findByEmailIgnoreCase(String email);
+
+    Optional<ProfileEntity> findByPhone(String phone);
+
+    boolean existsByEmailIgnoreCase(String email);
+
+    boolean existsByPhone(String phone);
+
     @Query("""
-            select p from Profile p
+            select p from ProfileEntity p
             where p.visible = true
               and (:name is null or lower(p.name) like lower(concat('%', :name, '%')))
               and (:surname is null or lower(p.surname) like lower(concat('%', :surname, '%')))
@@ -19,7 +29,7 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
               and (:createdFrom is null or p.createdDate >= :createdFrom)
               and (:createdTo is null or p.createdDate <= :createdTo)
             """)
-    Page<Profile> searchVisible(
+    Page<ProfileEntity> searchVisible(
             @Param("name") String name,
             @Param("surname") String surname,
             @Param("phone") String phone,
@@ -28,5 +38,5 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
             @Param("createdTo") java.time.LocalDateTime createdTo,
             Pageable pageable);
 
-    Page<Profile> findAllByVisibleTrue(Pageable pageable);
+    Page<ProfileEntity> findAllByVisibleTrue(Pageable pageable);
 }

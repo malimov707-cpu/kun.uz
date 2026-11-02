@@ -35,11 +35,11 @@ public class ArticleEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "moderator_id")
-    private Profile moderator;
+    private ProfileEntity moderator;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id")
-    private Profile publisher;
+    private ProfileEntity publisher;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")

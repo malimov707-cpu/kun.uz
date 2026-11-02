@@ -22,7 +22,7 @@ public class ArticleLikeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "profile_id", nullable = false)
-    private Profile profile;
+    private ProfileEntity profilelEntity;
 
     @Column(nullable = false)
     private Boolean status = true;

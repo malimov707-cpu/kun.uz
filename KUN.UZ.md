@@ -50,7 +50,7 @@
        (phone ->  code) or (mail -> link)
        (should by limit for verification time)
 2. Profile
-    1. Create profile (ADMIN) (can create MODERATOR,PUBLISHER))
+    1. Create profilelEntity (ADMIN) (can create MODERATOR,PUBLISHER))
        (name,surname,email,phone,password,status,role)
     2. Update Profile (ADMIN)
     3. Update Profile Detail (ANY) (Profile updates own details)
@@ -152,13 +152,13 @@
        (content,article_id)
     3. DELETE (ADMIN,ANY(only owner))
     4. Get Article Comment List By Article Id
-       id,created_date,update_date,profile(id,name,surname)
+       id,created_date,update_date,profilelEntity(id,name,surname)
     5. Comment List (pagination) (ADMIN)
-       (id,created_date,update_date,profile(id,name,surname),content,article(id,title),reply_id,)
+       (id,created_date,update_date,profilelEntity(id,name,surname),content,article(id,title),reply_id,)
     6. Comment Filter(id,created_date_from,created_date_to,profile_id,article_id) with Pagination (ADMIN)
        id,created_date,update_date,profile_id,content,article_id,reply_id,visible
     7. Get Replied Comment List by Comment Id
-       id,created_date,update_date,profile(id,name,surname)
+       id,created_date,update_date,profilelEntity(id,name,surname)
 
 9. CommentLike
     1. Like (ANY)

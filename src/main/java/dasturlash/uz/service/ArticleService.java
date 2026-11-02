@@ -94,8 +94,8 @@ public class ArticleService {
             if (publisherId == null) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "publisherId is required to publish");
             }
-            Profile publisher = profileRepository.findById(publisherId)
-                    .filter(Profile::isVisible)
+            ProfileEntity publisher = profileRepository.findById(publisherId)
+                    .filter(ProfileEntity::isVisible)
                     .filter(profile -> profile.getRole() == ProfileRole.ROLE_PUBLISH)
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Publisher not found"));
             article.setPublisher(publisher);
@@ -233,9 +233,9 @@ public class ArticleService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found"));
     }
 
-    private Profile getModerator(Long id) {
+    private ProfileEntity getModerator(Long id) {
         return profileRepository.findById(id)
-                .filter(Profile::isVisible)
+                .filter(ProfileEntity::isVisible)
                 .filter(profile -> profile.getRole() == ProfileRole.ROLE_MODERATOR)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Moderator not found"));
     }

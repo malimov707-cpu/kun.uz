@@ -1,4 +1,4 @@
-package dasturlash.uz.exception;
+package dasturlash.uz.exceptions;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

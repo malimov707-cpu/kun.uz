@@ -1,7 +1,7 @@
 package dasturlash.uz.mapper;
 
 import dasturlash.uz.dto.ProfileDTO;
-import dasturlash.uz.entity.Profile;
+import dasturlash.uz.entity.ProfileEntity;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,7 +14,7 @@ public interface ProfileMapper {
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "status", defaultExpression = "java(dasturlash.uz.enums.ProfileStatus.ACTIVE)")
     @Mapping(target = "role", defaultExpression = "java(dasturlash.uz.enums.ProfileRole.ROLE_USER)")
-    Profile toEntity(ProfileDTO dto);
+    ProfileEntity toEntity(ProfileDTO dto);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
@@ -22,8 +22,8 @@ public interface ProfileMapper {
     @Mapping(target = "status", ignore = true)
     @Mapping(target = "role", ignore = true)
     @Mapping(target = "visible", ignore = true)
-    Profile toUpdateEntity(ProfileDTO dto);
+    ProfileEntity toUpdateEntity(ProfileDTO dto);
 
     @Mapping(target = "password", ignore = true)
-    ProfileDTO toDto(Profile profile);
+    ProfileDTO toDto(ProfileEntity profilelEntity);
 }

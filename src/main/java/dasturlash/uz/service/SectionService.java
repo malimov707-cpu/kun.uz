@@ -3,7 +3,7 @@ package dasturlash.uz.service;
 import dasturlash.uz.dto.SectionDTO;
 import dasturlash.uz.entity.SectionEntity;
 import dasturlash.uz.enums.AppLanguageEnum;
-import dasturlash.uz.exception.AppBadException;
+import dasturlash.uz.exceptions.AppBadException;
 import dasturlash.uz.mapper.SectionMapper;
 import dasturlash.uz.repository.SectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
