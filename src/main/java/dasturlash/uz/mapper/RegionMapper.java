@@ -12,7 +12,9 @@ public interface RegionMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdDate", ignore = true)
+    @Mapping(target = "itemKey", source = "key")
     Region toEntity(RegionDTO dto);
 
+    @Mapping(target = "key", source = "itemKey")
     RegionDTO toDto(Region region);
 }

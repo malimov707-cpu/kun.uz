@@ -22,7 +22,9 @@ public class ArticleType {
     private String nameRu;
     @NotBlank
     private String nameEn;
-    private boolean visible = true;
+    @Column(name = "item_key", unique = true)
+    private String itemKey;
+    private Boolean visible = Boolean.TRUE;
     private LocalDateTime createdDate;
 
     @PrePersist
@@ -38,7 +40,9 @@ public class ArticleType {
     public void setNameRu(String nameRu) { this.nameRu = nameRu; }
     public String getNameEn() { return nameEn; }
     public void setNameEn(String nameEn) { this.nameEn = nameEn; }
-    public boolean isVisible() { return visible; }
-    public void setVisible(boolean visible) { this.visible = visible; }
+    public String getItemKey() { return itemKey; }
+    public void setItemKey(String itemKey) { this.itemKey = itemKey; }
+    public Boolean getVisible() { return visible; }
+    public void setVisible(Boolean visible) { this.visible = visible; }
     public LocalDateTime getCreatedDate() { return createdDate; }
 }

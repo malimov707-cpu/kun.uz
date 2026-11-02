@@ -16,6 +16,14 @@ public interface ProfileMapper {
     @Mapping(target = "role", defaultExpression = "java(dasturlash.uz.enums.ProfileRole.ROLE_USER)")
     Profile toEntity(ProfileDTO dto);
 
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdDate", ignore = true)
+    @Mapping(target = "status", ignore = true)
+    @Mapping(target = "role", ignore = true)
+    @Mapping(target = "visible", ignore = true)
+    Profile toUpdateEntity(ProfileDTO dto);
+
     @Mapping(target = "password", ignore = true)
     ProfileDTO toDto(Profile profile);
 }

@@ -69,6 +69,7 @@ public class Profile {
     public boolean isVisible() { return visible; }
     public void setVisible(boolean visible) { this.visible = visible; }
     public LocalDateTime getCreatedDate() { return createdDate; }
+    public void setCreatedDate(LocalDateTime createdDate) { this.createdDate = createdDate; }
     public Long getPhotoId() { return photoId; }
     public void setPhotoId(Long photoId) { this.photoId = photoId; }
 }

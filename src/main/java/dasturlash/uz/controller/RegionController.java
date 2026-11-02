@@ -1,6 +1,8 @@
 package dasturlash.uz.controller;
 
 import dasturlash.uz.dto.RegionDTO;
+import dasturlash.uz.dto.LocalizedItemDTO;
+import dasturlash.uz.enums.AppLanguageEnum;
 import dasturlash.uz.mapper.RegionMapper;
 import dasturlash.uz.service.RegionService;
 import jakarta.validation.Valid;
@@ -9,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/regions")
@@ -30,6 +34,17 @@ public class RegionController {
     @GetMapping
     public Page<RegionDTO> getAll(@PageableDefault(size = 20, sort = "orderNumber") Pageable pageable) {
         return service.getAll(pageable).map(mapper::toDto);
+    }
+
+    @GetMapping("/{id}")
+    public RegionDTO getById(@PathVariable Long id) {
+        return mapper.toDto(service.getById(id));
+    }
+
+    @GetMapping("/lang")
+    public List<LocalizedItemDTO> getAllByLang(
+            @RequestHeader(name = "Accept-Language", defaultValue = "uz") String language) {
+        return service.getAllByLang(AppLanguageEnum.from(language));
     }
 
     @PutMapping("/{id}")
