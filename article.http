@@ -1,0 +1,92 @@
+### 1. Create (Moderator)
+POST http://localhost:8081/api/v1/article/moderator
+Content-Type: application/json
+
+{
+  "title": "Yangilik sarlavhasi",
+  "description": "Maqola haqida qisqacha ma'lumot",
+  "content": "Maqolaning to'liq matni",
+  "regionId": 1,
+  "categoryId": 1,
+  "articleTypeIds": [1, 2],
+  "tags": ["siyosat", "yangilik"],
+  "moderatorId": 1
+}
+
+### 2. Update (Moderator)
+PUT http://localhost:8081/api/v1/article/moderator/REPLACE_WITH_ARTICLE_UUID
+Content-Type: application/json
+
+{
+  "title": "Yangilangan sarlavha",
+  "description": "Yangilangan qisqacha ma'lumot",
+  "content": "Yangilangan maqola matni",
+  "sharedCount": 0,
+  "regionId": 1,
+  "categoryId": 1,
+  "articleTypeIds": [1, 2],
+  "tags": ["siyosat", "yangilik"]
+}
+
+### 3. Delete (Moderator)
+DELETE http://localhost:8081/api/v1/article/moderator/REPLACE_WITH_ARTICLE_UUID
+
+### 4. Publish (Publisher)
+PUT http://localhost:8081/api/v1/article/moderator/REPLACE_WITH_ARTICLE_UUID/status
+Content-Type: application/json
+
+{
+  "status": "PUBLISHED",
+  "publisherId": 2
+}
+
+### 5. Unpublish (Publisher)
+PUT http://localhost:8081/api/v1/article/moderator/REPLACE_WITH_ARTICLE_UUID/status
+Content-Type: application/json
+
+{
+  "status": "NOT_PUBLISHED"
+}
+
+### 6. Get by id and language
+GET http://localhost:8081/api/v1/article/REPLACE_WITH_PUBLISHED_ARTICLE_UUID
+Accept-Language: uz
+
+### 7. Get last 5 by types
+GET http://localhost:8081/api/v1/article/types/latest?typeIds=1,2
+
+### 8. Get last 3 by types
+GET http://localhost:8081/api/v1/article/types/latest-three?typeIds=1,2
+
+### 9. Get last 8 excluding ids
+GET http://localhost:8081/api/v1/article/latest-except?ids=REPLACE_WITH_ARTICLE_UUID
+
+### 10. Get last 4 by types excluding article
+GET http://localhost:8081/api/v1/article/types/latest-except-article?typeIds=1,2&articleId=REPLACE_WITH_ARTICLE_UUID
+
+### 11. Get 4 most-read articles
+GET http://localhost:8081/api/v1/article/most-read
+
+### 12. Get last 4 by tag (move given article to the end)
+GET http://localhost:8081/api/v1/article/tags/siyosat/latest?lastArticleId=REPLACE_WITH_ARTICLE_UUID
+
+### 13. Get last 5 by types and region
+GET http://localhost:8081/api/v1/article/types/latest-by-region?typeIds=1,2&regionKey=tashkent
+
+### 14. Get articles by region (pagination)
+GET http://localhost:8081/api/v1/article/regions/tashkent?page=0&size=20
+
+### 15. Get last 5 by category
+GET http://localhost:8081/api/v1/article/categories/uzbekistan/latest
+
+### 16. Get articles by category (pagination)
+GET http://localhost:8081/api/v1/article/categories/uzbekistan?page=0&size=20
+
+### 17. Increase view count
+POST http://localhost:8081/api/v1/article/REPLACE_WITH_ARTICLE_UUID/view
+
+### 18. Increase share count
+POST http://localhost:8081/api/v1/article/REPLACE_WITH_ARTICLE_UUID/share
+
+### 19. Filter articles (Publisher)
+GET http://localhost:8081/api/v1/article/filter?id=REPLACE_WITH_ARTICLE_UUID&title=yangilik&regionId=1&categoryId=1&createdDateFrom=2026-01-01T00:00:00&createdDateTo=2026-12-31T23:59:59&publishedDateFrom=2026-01-01T00:00:00&publishedDateTo=2026-12-31T23:59:59&moderatorId=1&publisherId=2&status=PUBLISHED&page=0&size=20

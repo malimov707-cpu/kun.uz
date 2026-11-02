@@ -1,0 +1,33 @@
+### 1. Create
+POST http://localhost:8081/api/v1/section
+Content-Type: application/json
+
+{
+  "orderNumber": 1,
+  "nameUz": "Yangiliklar",
+  "nameRu": "Новости",
+  "nameEn": "News",
+  "sectionKey": "news"
+}
+
+### 2. Get all
+GET http://localhost:8081/api/v1/section
+
+### 3. Get by language
+GET http://localhost:8081/api/v1/section/lang
+Accept-Language: UZ
+
+### 4. Update
+PUT http://localhost:8081/api/v1/section/1
+Content-Type: application/json
+
+{
+  "orderNumber": 1,
+  "nameUz": "Yangiliklar",
+  "nameRu": "Новости",
+  "nameEn": "News",
+  "sectionKey": "news"
+}
+
+### 5. Delete
+DELETE http://localhost:8081/api/v1/section/1

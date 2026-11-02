@@ -1,0 +1,38 @@
+### 1. Create
+POST http://localhost:8081/api/v1/article-types
+Content-Type: application/json
+
+{
+  "orderNumber": 1,
+  "nameUz": "Asosiy",
+  "nameRu": "Главное",
+  "nameEn": "Main",
+  "key": "main",
+  "visible": true
+}
+
+### 2. Get all
+GET http://localhost:8081/api/v1/article-types?page=0&size=20
+
+### 3. Get by id
+GET http://localhost:8081/api/v1/article-types/1
+
+### 4. Get by language
+GET http://localhost:8081/api/v1/article-types/lang
+Accept-Language: uz
+
+### 5. Update
+PUT http://localhost:8081/api/v1/article-types/1
+Content-Type: application/json
+
+{
+  "orderNumber": 1,
+  "nameUz": "Asosiy",
+  "nameRu": "Главное",
+  "nameEn": "Main",
+  "key": "main",
+  "visible": true
+}
+
+### 6. Delete
+DELETE http://localhost:8081/api/v1/article-types/1

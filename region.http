@@ -1,0 +1,38 @@
+### 1. Create
+POST http://localhost:8081/api/v1/regions
+Content-Type: application/json
+
+{
+  "orderNumber": 1,
+  "nameUz": "Toshkent",
+  "nameRu": "Ташкент",
+  "nameEn": "Tashkent",
+  "key": "tashkent",
+  "visible": true
+}
+
+### 2. Get all
+GET http://localhost:8081/api/v1/regions?page=0&size=20
+
+### 3. Get by id
+GET http://localhost:8081/api/v1/regions/1
+
+### 4. Get by language
+GET http://localhost:8081/api/v1/regions/lang
+Accept-Language: uz
+
+### 5. Update
+PUT http://localhost:8081/api/v1/regions/1
+Content-Type: application/json
+
+{
+  "orderNumber": 1,
+  "nameUz": "Toshkent shahri",
+  "nameRu": "Город Ташкент",
+  "nameEn": "Tashkent City",
+  "key": "tashkent",
+  "visible": true
+}
+
+### 6. Delete
+DELETE http://localhost:8081/api/v1/regions/1

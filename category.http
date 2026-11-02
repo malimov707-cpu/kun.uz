@@ -1,0 +1,38 @@
+### 1. Create
+POST http://localhost:8081/api/v1/categories
+Content-Type: application/json
+
+{
+  "orderNumber": 1,
+  "nameUz": "O'zbekiston",
+  "nameRu": "Узбекистан",
+  "nameEn": "Uzbekistan",
+  "key": "uzbekistan",
+  "visible": true
+}
+
+### 2. Get all
+GET http://localhost:8081/api/v1/categories?page=0&size=20
+
+### 3. Get by id
+GET http://localhost:8081/api/v1/categories/1
+
+### 4. Get by language
+GET http://localhost:8081/api/v1/categories/lang
+Accept-Language: uz
+
+### 5. Update
+PUT http://localhost:8081/api/v1/categories/1
+Content-Type: application/json
+
+{
+  "orderNumber": 1,
+  "nameUz": "O'zbekiston",
+  "nameRu": "Узбекистан",
+  "nameEn": "Uzbekistan",
+  "key": "uzbekistan",
+  "visible": true
+}
+
+### 6. Delete
+DELETE http://localhost:8081/api/v1/categories/1
